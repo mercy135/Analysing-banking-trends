@@ -5,7 +5,7 @@ SELECT b.region_name as RegionName, COUNT(DISTINCT(a.consumer_id)) as NumUsers
 FROM `user_nodes`a
 RIGHT JOIN world_regions b ON a.region_id = b.region_id 
 GROUP BY b.region_name
-ORDER BY b.region_name
+ORDER BY b.region_name;
 
 
 /* Task 2 Write an SQL query to solve the given problem statement.
@@ -25,7 +25,7 @@ FROM user_transaction a
 INNER JOIN user_nodes b ON a.consumer_id=b.consumer_id 
 INNER JOIN world_regions c ON b.region_id = c.region_id 
 WHERE c.region_name = 'Europe' and a.transaction_type='deposit'
-GROUP BY a.consumer_id, c.region_name
+GROUP BY a.consumer_id, c.region_name;
 
 
 /* Task 4 Write an SQL query to solve the given problem statement.
@@ -36,7 +36,7 @@ FROM user_transaction a
 INNER JOIN user_nodes b ON a.consumer_id=b.consumer_id 
 INNER JOIN world_regions c ON b.region_id = c.region_id 
 WHERE c.region_name = 'United States' 
-GROUP BY a.consumer_id
+GROUP BY a.consumer_id;
 
 
 /* Task 5 Write an SQL query to solve the given problem statement
@@ -63,8 +63,7 @@ JOIN user_transaction ut ON un.consumer_id = ut.consumer_id
 WHERE wr.region_name = "Australia" AND ut.transaction_type = "deposit") 
 SELECT DISTINCT(ad.consumer_id), ad.transaction_amount as largest_deposit 
 FROM AustraliaDeposits ad 
-WHERE ad.transaction_amount IN (SELECT MAX(ad.transaction_amount) FROM AustraliaDeposits ad)
-
+WHERE ad.transaction_amount IN (SELECT MAX(ad.transaction_amount) FROM AustraliaDeposits ad);
 
   
 /* Task 7 Write an SQL query to solve the given problem statement.
@@ -75,7 +74,7 @@ FROM user_transaction a
 INNER JOIN user_nodes b ON a.consumer_id=b.consumer_id 
 INNER JOIN world_regions c ON b.region_id = c.region_id 
 WHERE a.transaction_type='deposit'
-GROUP BY a.consumer_id, c.region_name
+GROUP BY a.consumer_id, c.region_name;
 
   
 /* Task 8 Write an SQL query to solve the given problem statement.
@@ -100,7 +99,7 @@ FROM user_transaction a
 INNER JOIN user_nodes b ON a.consumer_id=b.consumer_id 
 INNER JOIN world_regions c ON b.region_id = c.region_id 
 WHERE a.transaction_type='deposit'
-GROUP BY  c.region_name
+GROUP BY  c.region_name;
 
 
 /* Task 10 Write an SQL query to solve the given problem statement.
@@ -128,7 +127,7 @@ What is the unique count and total amount for each transaction type? */
   
 SELECT transaction_type, COUNT(DISTINCT(consumer_id)) Numtrans, SUM(transaction_amount) TotalAmount 
 FROM user_transaction
-GROUP BY transaction_type
+GROUP BY transaction_type;
 
 /* Task 13 Write an SQL query to solve the given problem statement.
 What are the average deposit counts and amounts for each transaction type ('deposit') across all customers, grouped by transaction type?*/
@@ -140,7 +139,7 @@ WITH cte_deposit AS (
 		SUM(transaction_amount) AS deposit_amount
 	FROM user_transaction
 	WHERE transaction_type = 'deposit'
-	GROUP BY consumer_id
+	GROUP BY consumer_id;
 )
 SELECT 
 	transaction_type,

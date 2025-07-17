@@ -7,6 +7,8 @@ RIGHT JOIN world_regions b ON a.region_id = b.region_id
 GROUP BY b.region_name
 ORDER BY b.region_name;
 
+mkkllldlfffffr
+
 
 /* Task 2 Write an SQL query to solve the given problem statement.
 Find the user who made the largest deposit amount and the transaction type for that deposit.*/
